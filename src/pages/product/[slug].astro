@@ -3,9 +3,9 @@ import Layout from '../../components/Layout.astro';
 import products from '../../data/products.json';
 export async function getStaticPaths(){return products.products.map(p=>({params:{slug:p.slug},props:{product:p}}));}
 const { product }=Astro.props;
-const jsonLd=[{"@context":"https://schema.org","@type":"Product","name":product.name,"sku":product.sku,"image":[`https://yourdomain.com${product.image}`],"description":product.description,"brand":{"@type":"Brand","name":"Your Crystal Shop"},"offers":{"@type":"Offer","priceCurrency":"USD","price":String(product.price),"availability":"https://schema.org/InStock","url":`https://yourdomain.com/product/${product.slug}`}}];
+const jsonLd=[{"@context":"https://schema.org","@type":"Product","name":product.name,"sku":product.sku,"image":[`https://gaiamneme.com${product.image}`],"description":product.description,"brand":{"@type":"Brand","name":"Gaia Mnémé"},"offers":{"@type":"Offer","priceCurrency":"USD","price":String(product.price),"availability":"https://schema.org/InStock","url":`https://gaiamneme.com/product/${product.slug}`}}];
 ---
-<Layout title={`${product.name} – Your Crystal Shop`} description={product.description} jsonLd={jsonLd}>
+<Layout title={`${product.name} — Gaia Mnémé`} description={product.description} jsonLd={jsonLd}>
 <section class="section"><div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start">
   <div class="card"><img src={product.image} alt={product.imageAlt||product.name} style="width:100%;object-fit:cover"/></div>
   <div><h1 style="font-size:32px;font-weight:700;margin:0 0 8px">{product.name}</h1>

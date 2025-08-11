@@ -2,16 +2,19 @@
 import Layout from '../components/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import products from '../data/products.json';
-const jsonLd=[{"@context":"https://schema.org","@type":"Organization","name":"Your Crystal Shop","url":"https://yourdomain.com"}];
+const jsonLd=[{"@context":"https://schema.org","@type":"Organization","name":"Gaia Mnémé","url":"https://gaiamneme.com","logo":"https://gaiamneme.com/favicon.ico"}];
 ---
-<Layout title="Your Crystal Shop – Handpicked, Ethically Sourced Crystals" description="A polished Astro storefront." jsonLd={jsonLd}>
-<section class="section" style="background:radial-gradient(1200px 400px at 20% 0%,rgba(167,139,250,.25),transparent),radial-gradient(1000px 400px at 100% 100%,rgba(103,232,249,.15),transparent)">
-  <div class="container" style="display:grid;gap:24px;grid-template-columns:1.2fr 1fr;align-items:center">
-    <div><h1 style="font-size:40px;margin:0 0 8px">Find your calm.</h1>
-      <p style="color:#cfd3dc;margin:0 0 16px">Handpicked, ethically sourced crystals. Minimal design. Fast checkout.</p>
-      <div><a class="btn" href="/shop">Shop crystals</a> <a class="btn-secondary" style="margin-left:8px" href="/about">Our story</a></div></div>
-    <div style="height:280px;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)),url('/assets/hero.jpg') center/cover no-repeat;border:1px solid rgba(255,255,255,.08)" role="img" aria-label="Crystal arrangement"></div>
-  </div></section>
+<Layout
+  title="Gaia Mnémé — Crystals, Herbal Blends & Ritual Oils"
+  description="Energy, warmth, and ritual in every piece."
+  jsonLd={jsonLd}>
+  <section class="section">
+    <div class="container" style="display:grid;gap:24px;grid-template-columns:1.2fr 1fr;align-items:center">
+      <div><h1 style="font-size:40px;margin:0 0 8px">Gaia Mnémé</h1>
+        <p style="color:#cfd3dc;margin:0 0 16px">Gaia Mnémé draws from the grace of Greek myth to bring you hand-selected crystals, herbal blends, and oils that restore balance and brighten your daily rituals. Each piece carries lasting warmth and energy, ready to be part of your life.</p>
+        <div><a class="btn" href="/shop">Shop the collection</a> <a class="btn-secondary" style="margin-left:8px" href="/about">Our story</a></div></div>
+      <div style="height:280px;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)),url('/assets/hero.jpg') center/cover no-repeat;border:1px solid rgba(255,255,255,.08)" role="img" aria-label="Crystal arrangement"></div>
+    </div></section>
 <section class="section"><div class="container"><h2 class="section-title">Featured</h2>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">{products.products.slice(0,3).map((p)=><ProductCard p={p} />)}</div>
 </div></section>

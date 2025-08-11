@@ -4,7 +4,7 @@ import ProductCard from '../components/ProductCard.astro';
 import products from '../data/products.json';
 const stones=Array.from(new Set(products.products.map(p=>p.stone))).filter(Boolean).sort();
 ---
-<Layout title="Shop – Your Crystal Shop" description="Browse all crystals.">
+<Layout title="Shop — Gaia Mnémé" description="Crystals, herbal blends, and ritual oils.">
 <section class="section"><div class="container">
   <div style="display:flex;align-items:end;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap">
     <h1 style="font-size:32px;font-weight:700">Shop All</h1>
