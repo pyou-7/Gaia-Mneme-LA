@@ -1,21 +1,86 @@
 ---
 import Layout from '../components/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
+import Marquee from '../components/Marquee.astro';
+import CollectionTile from '../components/CollectionTile.astro';
 import products from '../data/products.json';
-const jsonLd=[{"@context":"https://schema.org","@type":"Organization","name":"Gaia Mnémé","url":"https://gaiamneme.com","logo":"https://gaiamneme.com/favicon.ico"}];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Gaia Mnémé",
+    "url": "https://gaiamneme.com",
+    "logo": "https://gaiamneme.com/favicon.ico"
+  }
+];
+const featured = products.products.slice(0, 3);
 ---
 <Layout
   title="Gaia Mnémé — Crystals, Herbal Blends & Ritual Oils"
   description="Energy, warmth, and ritual in every piece."
-  jsonLd={jsonLd}>
+  jsonLd={jsonLd}
+>
+  <!-- HERO -->
+  <section class="section" style="background:
+    radial-gradient(1200px 420px at 15% 0%, rgba(163,177,138,.25), transparent),
+    radial-gradient(1000px 420px at 100% 100%, rgba(217,199,158,.12), transparent)">
+    <div class="container" style="display:grid;gap:24px;grid-template-columns:1.15fr 1fr;align-items:center">
+      <div>
+        <h1>Gaia Mnémé</h1>
+        <p class="muted" style="margin: 8px 0 18px">
+          Gaia Mnémé draws from the grace of Greek myth to bring you hand-selected crystals, herbal blends, and oils that restore balance and brighten your daily rituals.
+          Each piece carries lasting warmth and energy—made to be lived with, not just looked at.
+        </p>
+        <div>
+          <a class="btn" href="/shop">Shop the collection</a>
+          <a class="btn-secondary" style="margin-left:10px" href="/about">Our story</a>
+        </div>
+      </div>
+      <div style="height:320px;border-radius:16px;background:
+           linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+           url('/assets/hero.jpg') center/cover no-repeat;
+           border:1px solid rgba(255,255,255,.08)"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE (brand mantra) -->
+  <Marquee text="Energy • Warmth • Ritual • Gaia Mnémé" />
+
+  <!-- COLLECTIONS -->
   <section class="section">
-    <div class="container" style="display:grid;gap:24px;grid-template-columns:1.2fr 1fr;align-items:center">
-      <div><h1 style="font-size:40px;margin:0 0 8px">Gaia Mnémé</h1>
-        <p style="color:#cfd3dc;margin:0 0 16px">Gaia Mnémé draws from the grace of Greek myth to bring you hand-selected crystals, herbal blends, and oils that restore balance and brighten your daily rituals. Each piece carries lasting warmth and energy, ready to be part of your life.</p>
-        <div><a class="btn" href="/shop">Shop the collection</a> <a class="btn-secondary" style="margin-left:8px" href="/about">Our story</a></div></div>
-      <div style="height:280px;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)),url('/assets/hero.jpg') center/cover no-repeat;border:1px solid rgba(255,255,255,.08)" role="img" aria-label="Crystal arrangement"></div>
-    </div></section>
-<section class="section"><div class="container"><h2 class="section-title">Featured</h2>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">{products.products.slice(0,3).map((p)=><ProductCard p={p} />)}</div>
-</div></section>
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        <CollectionTile href="/shop" title="Crystals" image="/assets/collections/crystals.jpg" />
+        <CollectionTile href="/shop" title="Herbal Blends" image="/assets/collections/herbs.jpg" />
+        <CollectionTile href="/shop" title="Oils" image="/assets/collections/oils.jpg" />
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <section class="section">
+    <div class="container">
+      <h2>Featured</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        {featured.map((p) => <ProductCard p={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY / WHY (inspired by clear “why” sections on skincare sites) -->
+  <section class="section">
+    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center">
+      <div style="height:280px;border-radius:16px;background:
+           linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+           url('/assets/hero.jpg') center/cover no-repeat;
+           border:1px solid rgba(255,255,255,.08)"></div>
+      <div>
+        <h2>Made to be lived with</h2>
+        <p class="muted">
+          We source with care and craft with intention—pieces that feel grounded, warm, and enduring. Bring a little ceremony into the every day.
+        </p>
+      </div>
+    </div>
+  </section>
 </Layout>

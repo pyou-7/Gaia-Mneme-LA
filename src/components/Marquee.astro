@@ -1,0 +1,11 @@
+---
+const { text = 'Gaia Mnémé' } = Astro.props;
+---
+<div class="marquee">
+  <div class="marquee__track">
+    <span>{text}</span><span>{text}</span><span>{text}</span><span>{text}</span>
+  </div>
+  <div class="marquee__track" aria-hidden="true">
+    <span>{text}</span><span>{text}</span><span>{text}</span><span>{text}</span>
+  </div>
+</div>

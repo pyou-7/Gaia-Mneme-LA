@@ -1,0 +1,12 @@
+---
+const { href = '/shop', title = 'Collection', image = '/assets/hero.jpg' } = Astro.props;
+---
+<a href={href} class="card" style="display:block">
+  <div style="aspect-ratio: 4/3; background: url('${image}') center/cover no-repeat;"></div>
+  <div class="card-body" style="display:flex;justify-content:space-between;align-items:center">
+    <div style="font-weight:700">{title}</div>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M9 6l6 6-6 6" stroke="#e8e9ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</a>
