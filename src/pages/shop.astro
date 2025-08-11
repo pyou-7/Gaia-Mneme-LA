@@ -1,0 +1,28 @@
+---
+import Layout from '../components/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import products from '../data/products.json';
+const stones=Array.from(new Set(products.products.map(p=>p.stone))).filter(Boolean).sort();
+---
+<Layout title="Shop – Your Crystal Shop" description="Browse all crystals.">
+<section class="section"><div class="container">
+  <div style="display:flex;align-items:end;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap">
+    <h1 style="font-size:32px;font-weight:700">Shop All</h1>
+    <div><label style="color:#cfd3dc;margin-right:8px">Stone type</label>
+      <select id="filter-stone" style="background:#121217;color:#e8e9ee;border:1px solid rgba(255,255,255,.2);padding:8px;border-radius:10px">
+        <option value="">All</option>{stones.map(s=><option value={s}>{s}</option>)}
+      </select></div></div>
+  <div id="shop-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">{products.products.map((p)=><ProductCard p={p} />)}</div>
+</div></section>
+<script type="module">
+  const data=JSON.parse(document.querySelector('script[type=application/json]')?.textContent||'[]');
+  const sel=document.getElementById('filter-stone');const grid=document.getElementById('shop-grid');const original=grid.innerHTML;
+  function render(){const v=sel.value;if(!v){grid.innerHTML=original;return;}grid.innerHTML=data.filter(p=>p.stone===v).map(p=>`
+    <div class='card'><a href='/product/${p.slug}'><img src='${p.image}' alt='${p.imageAlt||p.name}' style='aspect-ratio:1/1;object-fit:cover;width:100%'/></a>
+    <div class='card-body'><div style='font-weight:600'>${p.name}</div><div style='color:#cfd3dc;font-size:14px'>${p.stone}</div>
+    <div style='display:flex;gap:8px;margin:6px 0 12px'><strong>$${p.price}</strong>${p.compareAt?`<span style="text-decoration:line-through;color:#9aa3b2">$${p.compareAt}</span>`:''}</div>
+    <div style='display:flex;gap:8px'>${p.stripeLink&&p.stripeLink!=='#'?`<a class='btn' href='${p.stripeLink}'>Buy now</a>`:`<a class='btn' href='#' aria-disabled='true'>Buy (link later)</a>`}${p.badge?`<span class='pill'>${p.badge}</span>`:''}</div></div></div>`).join('');}
+  sel?.addEventListener('change',render);
+</script>
+<script type="application/json">{JSON.stringify(products.products)}</script>
+</Layout>

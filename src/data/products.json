@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "slug": "amethyst-tower-aaa",
+      "sku": "AM-TWR-001",
+      "name": "Amethyst Tower (AAA)",
+      "stone": "Amethyst",
+      "price": 89,
+      "compareAt": 109,
+      "badge": "Best Seller",
+      "image": "/assets/amethyst.jpg",
+      "imageAlt": "Amethyst tower",
+      "stripeLink": "#",
+      "origin": "Brazil",
+      "weight": "420g",
+      "dimensions": "12x4x4 cm",
+      "description": "Hand-selected AAA amethyst tower."
+    },
+    {
+      "slug": "rose-quartz-heart",
+      "sku": "RQ-SHP-001",
+      "name": "Rose Quartz Heart",
+      "stone": "Rose Quartz",
+      "price": 29,
+      "compareAt": null,
+      "badge": "New",
+      "image": "/assets/rose-quartz.jpg",
+      "imageAlt": "Rose quartz heart",
+      "stripeLink": "#",
+      "origin": "Madagascar",
+      "weight": "150g",
+      "dimensions": "6x6x2 cm",
+      "description": "A gentle rose quartz heart."
+    },
+    {
+      "slug": "selenite-cleansing-wand",
+      "sku": "CL-SEL-001",
+      "name": "Selenite Cleansing Wand",
+      "stone": "Selenite",
+      "price": 19,
+      "compareAt": null,
+      "badge": null,
+      "image": "/assets/selenite.jpg",
+      "imageAlt": "Selenite wand",
+      "stripeLink": "#",
+      "origin": "Morocco",
+      "weight": "90g",
+      "dimensions": "15x2x2 cm",
+      "description": "Satin sheen cleansing wand."
+    }
+  ]
+}

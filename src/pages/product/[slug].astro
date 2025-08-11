@@ -1,0 +1,18 @@
+---
+import Layout from '../../components/Layout.astro';
+import products from '../../data/products.json';
+export async function getStaticPaths(){return products.products.map(p=>({params:{slug:p.slug},props:{product:p}}));}
+const { product }=Astro.props;
+const jsonLd=[{"@context":"https://schema.org","@type":"Product","name":product.name,"sku":product.sku,"image":[`https://yourdomain.com${product.image}`],"description":product.description,"brand":{"@type":"Brand","name":"Your Crystal Shop"},"offers":{"@type":"Offer","priceCurrency":"USD","price":String(product.price),"availability":"https://schema.org/InStock","url":`https://yourdomain.com/product/${product.slug}`}}];
+---
+<Layout title={`${product.name} – Your Crystal Shop`} description={product.description} jsonLd={jsonLd}>
+<section class="section"><div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start">
+  <div class="card"><img src={product.image} alt={product.imageAlt||product.name} style="width:100%;object-fit:cover"/></div>
+  <div><h1 style="font-size:32px;font-weight:700;margin:0 0 8px">{product.name}</h1>
+    <div style="color:#cfd3dc;margin-bottom:8px">{product.stone}</div>
+    <div style="display:flex;gap:8px;margin:6px 0 12px"><strong style="font-size:20px">${product.price}</strong>{product.compareAt&&<span style="text-decoration:line-through;color:#9aa3b2">${product.compareAt}</span>}</div>
+    <p style="color:#cfd3dc;margin-bottom:16px">{product.description}</p>
+    <ul style="color:#cfd3dc;margin-bottom:24px;line-height:1.7">{product.origin&&<li><strong>Origin:</strong> {product.origin}</li>}{product.weight&&<li><strong>Weight:</strong> {product.weight}</li>}{product.dimensions&&<li><strong>Dimensions:</strong> {product.dimensions}</li>}</ul>
+    {product.stripeLink?<a class="btn" href={product.stripeLink}>Buy now</a>:<a class="btn" href="#" aria-disabled="true">Buy (link later)</a>}
+  </div></div></section>
+</Layout>
