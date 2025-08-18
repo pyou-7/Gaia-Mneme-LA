@@ -8,8 +8,8 @@ module.exports = {
         card: '#121217',      // card surface
         text: '#e8e9ee',
         muted: '#9aa3b2',
-        brand: '#A3B18A',     // Soft Sage (primary)
-        brand2: '#D9C79E',    // light platinum/champagne (accent)
+        brand: '#A3B18A',     // Soft Sage Green (PRIMARY)
+        brand2: '#D9C79E',    // Light platinum / champagne (ACCENT)
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui'],
